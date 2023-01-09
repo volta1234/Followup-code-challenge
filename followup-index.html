@@ -6,30 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,1,200" />
     <link rel="stylesheet" href="./followup-styles.css">
-    <title>Document</title>
+    <title></title>
 </head>
 <body>
     <div id="mainContainer">
         <div id="imageContainer">
-            <h2 id="tittle">Expected Flatgram tittle</h2>
+            <button class="getdogdetails" id="getdogdetails">fetch dog details</button>
+            <h2 id="tittle">Tittle Goes Here</h2>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBnGE2KZQU081mZhDTaq80X-eDIo0dbyyLf1N3WzKk9d2NnCnaMVRsN3yRVD1Yqg56TMs&usqp=CAU" alt="dog" id="imagePhoto">
             <div id="likes">
                 <span id="count" class="like">0 likes</span>
-                <icon id="likesButton" class="likesButton"><span id="favorite" class="material-symbols-outlined">favorite</span></icon>
             </div>
+            <icon id="likesButton" class="likesButton"><span id="favorite" class="material-symbols-outlined">favorite</span></icon>
             <div id="input">
-                <ul id="comments" class="comments">
-                    <li>comment1</li>
-                    <li>comment2</li>
-                    <li>comment3</li>
-                    <li><span id="newcomment"></span></li>
-                </ul>
-                <form action="input" type="text" id="addcomment" class="addcomment">
-                   <input type="text" id="input" class="input" name="comments" placeholder="type your comment here"/>
-                   <button id="commentadded" class="commentadded">ADD</button>
-                </form>
+                <ul id="comments" class="comments"></ul>
+                <span id="newcomment"></span>
             </div>
         </div>
+
+        <form action="input" type="text" id="addcomment" class="addcomment">
+            <input type="text" id="input" class="input" name="comments" placeholder="type your comment here"/>
+            <button id="commentadded" class="commentadded">ADD</button>
+         </form>
     </div>
     <script src="./followup-index.js"></script>
 </body>

@@ -1,13 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-   const source = "http://localhost:3000/images/1";
 
    const newComment = document.getElementById("addcomment")
-   const comment = document.getElementById("")
 
-   function fetch() {
-      return fetch(source)
-      .then(response => Response.json())
-   }
 
    newComment.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -15,4 +9,28 @@ document.addEventListener("DOMContentLoaded", () => {
       const comments = document.getElementById("newcomment");
       comments.innerText = commentForm.comments.value + comments.innerText;
    })
+
+   const dogTittle = document.getElementById("tittle")
+   const dogImage = document.getElementById("imagePhoto")
+   const dogComments = document.getElementById("comments")
+   const fetchButton = document.getElementById("getdogdetails")
+   const dogLikes = document.getElementById("likes")
+
+   function mydogs() {
+      fetch("http://localhost:3000/images")
+      .then(response => response.json())
+      .then(data => {
+         console.log(data)
+         data.forEach(image => {
+            dogTittle.innerHTML = `<h2>${image.title}</H2>`
+         })
+         data.forEach(image => {
+            dogLikes.innerHTML = `<span id="count">${image.likes}</span>`
+         })
+         data.forEach(image => {
+            dogComments.innerHTML = `<ul>${image.comments}</ul>`
+         })
+      })
+   }
+   fetchButton.addEventListener("click", mydogs)
 })
