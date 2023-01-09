@@ -9,7 +9,6 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- <img src="./assets/coder-dog.png" alt="image" id="image"/> -->
     <div id="mainContainer">
         <div id="imageContainer">
             <h2 id="tittle">Expected Flatgram tittle</h2>
@@ -18,15 +17,18 @@
                 <span id="count" class="like">0 likes</span>
                 <icon id="likesButton" class="likesButton"><span id="favorite" class="material-symbols-outlined">favorite</span></icon>
             </div>
-            <ul id="comments" class="comments">
-                <li>comment1</li>
-                <li>comment2</li>
-                <li>comment3</li>
-            </ul>
-            <form action="input" type="text" id="addcomment" class="addcomment">
-               <input type="text" id="input" class="input" name="comments" placeholder="type your comment here"/>
-               <button id="commentadded" class="commentadded">ADD</button>
-            </form>
+            <div id="input">
+                <ul id="comments" class="comments">
+                    <li>comment1</li>
+                    <li>comment2</li>
+                    <li>comment3</li>
+                    <li><span id="newcomment"></span></li>
+                </ul>
+                <form action="input" type="text" id="addcomment" class="addcomment">
+                   <input type="text" id="input" class="input" name="comments" placeholder="type your comment here"/>
+                   <button id="commentadded" class="commentadded">ADD</button>
+                </form>
+            </div>
         </div>
     </div>
     <script src="./followup-index.js"></script>
