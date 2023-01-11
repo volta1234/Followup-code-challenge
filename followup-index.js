@@ -1,36 +1,54 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-   const newComment = document.getElementById("addcomment")
+   const Image = document.getElementById("card-image");
+   const Tittle = document.getElementById("card-tittle");
+   const Likes = document.getElementById("like-count");
+   const Comments = document.getElementById("comment-list");
+   const likesButton = document.getElementById("like-button");
+   const addCommentsForm = document.getElementById("comment-form")
+   let likes;
 
+   fetch(" http://localhost:3000/images/1")
+   .then((response) => response.json())
+   .then(pageData);
 
-   newComment.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const commentForm = event.target;
-      const comments = document.getElementById("newcomment");
-      comments.innerText = commentForm.comments.value + comments.innerText;
+   function pageData(data) {
+      likes = data.likes;
+      Image.src = data.image;
+      Tittle.textContent = data.title;
+      Likes.textContent = data.likes;
+
+      pageLikes();
+      pageComments(data.comments);
+   }
+
+   function pageLikes() {
+      Likes.textContent = `${likes} likes`
+   }
+
+   function pageComments(comments) {
+      Comments.innerHTML = "";
+      comments.forEach(pageComment);
+   }
+
+   function pageComment(comment) {
+      let List = document.createElement("li");
+      List.textContent = comment.content;
+      Comments.appendChild(List);
+   }
+
+   function post(e) {
+      e.preventDefault();
+      const newComments = e.target.comment.value;
+      pageComment({content: newComments})
+
+      event.target.reset();
+   }
+
+   likesButton.addEventListener("click", () => {
+      likes += 1;
+      pageLikes();
    })
 
-   const dogTittle = document.getElementById("tittle")
-   const dogImage = document.getElementById("imagePhoto")
-   const dogComments = document.getElementById("comments")
-   const fetchButton = document.getElementById("getdogdetails")
-   const dogLikes = document.getElementById("likes")
-
-   function mydogs() {
-      fetch("http://localhost:3000/images")
-      .then(response => response.json())
-      .then(data => {
-         console.log(data)
-         data.forEach(image => {
-            dogTittle.innerHTML = `<h2>${image.title}</H2>`
-         })
-         data.forEach(image => {
-            dogLikes.innerHTML = `<span id="count">${image.likes}</span>`
-         })
-         data.forEach(image => {
-            dogComments.innerHTML = `<ul>${image.comments}</ul>`
-         })
-      })
-   }
-   fetchButton.addEventListener("click", mydogs)
+   addCommentsForm.addEventListener("submit", post);
 })
